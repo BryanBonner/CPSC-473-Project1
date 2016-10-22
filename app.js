@@ -1,26 +1,65 @@
-/* jshint browser: true, jquery: true, camelcase: true, indent: 2, undef: true, quotmark: single, maxlen: 80, trailing: true, curly: true, eqeqeq: true, forin: true, immed: true, latedef: true, newcap: true, nonew: true, unused: true, strict: true */
+var express = require('express');
+var http = require('http');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var bodyParser = require('body-parser');
+var LocalStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-var main = function() {
-    'use strict';
+var app = express();
+User = require('./models/user');
 
-    document.getElementById('comment-section').innerHTML = 'comment1';
-    document.getElementById('comment-section').innerHTML = 'comment2';
-    document.getElementById('comment-section').innerHTML = 'comment3';
+app.use(bodyParser.json()); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+    extended: true
+}));
 
-    $('#average-button').on('click', function() {
-        $.ajax({
-            contentType: 'application/json',
-            type: 'POST',
-            url: 'http://localhost:3000/average',
-            data: JSON.stringify({
-                'array': '[1,2,3,4]'
-            }),
-            dataType: 'json',
-            success: function(data) {
-                window.alert('Result: ' + data.result);
-            }
+// Create our Express-powered HTTP server
+http.createServer(app).listen(3000);
+console.log('Running on port 3000');
+
+
+// Mongoose
+mongoose.connect('mongodb://localhost/auth');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(require('express-session')({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Initalizes passport and creates a session
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Salts and Hashes users password
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+// set up our routes
+app.get('/', function(req, res) {
+    res.render('index');
+});
+
+// Register page
+app.get("/register", function(req, res) {
+    res.render("register");
+});
+
+// register post
+app.post("/register", function(req,res){
+    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate("local")(req, res, function(){
+           res.redirect("/successfull");
         });
     });
-};
-
-$(document).ready(main);
+});
