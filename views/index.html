@@ -6,6 +6,7 @@
     <title>Our Webpage</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <div class="right menu">
                 <button class="ui inverted blue button">
                   <i class="sign in icon"></i>Login</button>
-                <button onclick="window.location.href='signUp.html'" onclick=""class="ui inverted green button"><i class="sign in icon"></i>Register</button>
+                <button onclick=""class="ui inverted green button"><i class="sign in icon"></i>Register</button>
             </div>
         </div>
     </div>
@@ -41,12 +42,8 @@
             <li>New</li>
         </div>
         <div class="six wide column">
-            <ul>
-                <li>POST1</li>
-                <li>POST2</li>
-                <li>POST3</li>
-                <li>POST4</li>
-                <li>POST5</li>
+            <ul id="comments">
+                <li id="comment-section"></li>
             </ul>
         </div>
         <div class="four wide column"></div>

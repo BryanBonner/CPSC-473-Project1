@@ -1,0 +1,37 @@
+{
+    "name": "project1",
+    "version": "1.0.0",
+    "description": "Share excuses for missing class with professors",
+    "depenencies": {
+        "dependencies": {
+            "bcryptjs": "*",
+            "body-parser": "*",
+            "connect-flash": "*",
+            "cookie-parser": "^1.4.1",
+            "express": "*",
+            "express-handlebars": "*",
+            "express-messages": "*",
+            "express-session": "*",
+            "express-validator": "*",
+            "mongodb": "*",
+            "mongoose": "*",
+            "path": "*",
+            "passport": "*",
+            "passport-http": "*",
+            "passport-local": "*"
+        }
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jcruz1991/CPSC-473-Project1.git"
+    },
+    "author": "Unlamented Epicurean",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jcruz1991/CPSC-473-Project1/issues"
+    },
+    "homepage": "https://github.com/jcruz1991/CPSC-473-Project1#readme"
+}
