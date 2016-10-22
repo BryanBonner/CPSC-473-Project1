@@ -2,8 +2,7 @@
     "name": "project1",
     "version": "1.0.0",
     "description": "Share excuses for missing class with professors",
-    "depenencies": {
-        "dependencies": {
+    "dependencies": {
             "bcryptjs": "*",
             "body-parser": "*",
             "connect-flash": "*",
@@ -20,7 +19,6 @@
             "passport": "*",
             "passport-http": "*",
             "passport-local": "*"
-        }
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
