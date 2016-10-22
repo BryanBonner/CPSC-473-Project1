@@ -39,8 +39,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-
 // set up our routes
 app.get('/', function(req, res) {
     res.render('index');
@@ -53,13 +51,53 @@ app.get("/register", function(req, res) {
 
 // register post
 app.post("/register", function(req,res){
-    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            return res.render('register');
+  //set request data
+    var email = req.body.email,
+      username = req.body.username,
+      password = req.body.password;
+
+    //create the new user object
+      var newuser = new User();
+      newuser.email = email,
+      newuser.username = username,
+      newuser.password = password;
+      newuser.save(function(err, savedUser) {
+        if(err) {
+          console.log(err);
+          return res.status(500).send();
         }
-        passport.authenticate("local")(req, res, function(){
-           res.redirect("/successfull");
-        });
-    });
+        return res.status(200).sen();
+      });
+  };
+
+//login post
+app.post("/login", function(req, res) {
+  var email = req.body.email,
+    username = req.body.username,
+    password = req.body.password;
+    //query db and return 200 on success
+    User.findOne({email: email, username: username, password: password}, fcuntion(err, User) {
+      if(err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if(!user) {
+        return res.status(404).send();
+      }
+      else {
+        return res.status(200).send();
+      }
+    })
+});
+
+    //--commented out for now because I'm unfamiliar with passport, will update later--
+    // User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+    //     if(err){
+    //         console.log(err);
+    //         return res.render('register');
+    //     }
+    //     passport.authenticate("local")(req, res, function(){
+    //        res.redirect("/successfull");
+    //     });
+    // });
 });
