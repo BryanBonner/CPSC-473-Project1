@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var mongoose = require('mongoose');
+var mongo = require('mongodb');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var LocalStrategy = require('passport-local');
