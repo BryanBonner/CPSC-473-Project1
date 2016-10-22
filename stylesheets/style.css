@@ -17,12 +17,6 @@ main .postTextBox
   align-items: center;
 }
 
-main .loginMain
-{
-  padding-left: 200px;
-  padding-right: 200px;
-}
-
 footer .loginWAccount
 {
   padding-top: 50px;
