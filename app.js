@@ -59,8 +59,8 @@ app.post("/register", function(req,res){
 
     //create the new user object
       var newuser = new User();
-      newuser.email = email,
-      newuser.username = username,
+      newuser.email = email;
+      newuser.username = username;
       newuser.password = password;
       newuser.save(function(err, savedUser) {
         if(err) {
@@ -69,7 +69,7 @@ app.post("/register", function(req,res){
         }
         return res.status(200).sen();
       });
-  };
+  });
 
 //login post
 app.post("/login", function(req, res) {
@@ -77,7 +77,7 @@ app.post("/login", function(req, res) {
     username = req.body.username,
     password = req.body.password;
     //query db and return 200 on success
-    User.findOne({email: email, username: username, password: password}, fcuntion(err, User) {
+    User.findOne({email: email, username: username, password: password}, function(err, User) {
       if(err) {
         console.log(err);
         return res.status(500).send();
@@ -88,7 +88,7 @@ app.post("/login", function(req, res) {
       else {
         return res.status(200).send();
       }
-    })
+    });
 });
 
     //--commented out for now because I'm unfamiliar with passport, will update later--
