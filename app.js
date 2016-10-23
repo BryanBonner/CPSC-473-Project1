@@ -16,6 +16,13 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
 
+//fixes the Access-Control-Allow-Origin
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Create our Express-powered HTTP server
 http.createServer(app).listen(3000);
 console.log('Running on port 3000');
@@ -110,4 +117,3 @@ app.post("/login", function(req, res) {
     //        res.redirect("/successfull");
     //     });
     // });
-});
