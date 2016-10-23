@@ -22,6 +22,7 @@ console.log('Running on port 3000');
 
 
 // Connect to the database
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://473:project1@ds039674.mlab.com:39674/cpsc473');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -49,7 +50,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // set up our routes
 app.get('/', function(req, res) {
-    res.render('index');
+    res.send("You are on the index")
+    // res.render('index'); Commented because giving render error
 });
 
 // Register page
@@ -74,7 +76,7 @@ app.post("/register", function(req,res){
           console.log(err);
           return res.status(500).send();
         }
-        return res.status(200).sen();
+        return res.status(200).send();
       });
   });
 
