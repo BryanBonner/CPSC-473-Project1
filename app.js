@@ -86,7 +86,7 @@ app.post("/login", function(req, res) {
     username = req.body.username,
     password = req.body.password;
     //query db and return 200 on success
-    User.findOne({email: email, username: username, password: password}, function(err, User) {
+    User.findOne({email: email, username: username, password: password}, function(err, user) {
       if(err) {
         console.log(err);
         return res.status(500).send();
