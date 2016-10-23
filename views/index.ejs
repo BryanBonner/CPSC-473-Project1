@@ -2,13 +2,17 @@
 <html>
 <head>
     <title>Our Webpage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link href="../stylesheets/indexPageStyle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
 
 <body>
@@ -30,7 +34,7 @@
                                 <input type="text" name="user" id="userName" placeholder="Username">
                                 <label for="passwd" class="ui-hidden-accessible">Password:</label>
                                 <input type="password" name="passw" id="passwd" placeholder="Password">
-                                <input type="submit" data-inline="true" value="Log in">
+                                <input type="submit" id="submitLogin" data-inline="true" value="Log in">
                             </div>
                         </form>
                     </div>
@@ -49,7 +53,7 @@
                                 <input type="password" name="passw" id="passwdReg" placeholder="Password">
                                 <label for="passwdRetype" class="ui-hidden-accessible">Password:</label>
                                 <input type="password" name="passw" id="passwdRetype" placeholder="Re-Type password">
-                                <input type="submit" data-inline="true" value="Log in">
+                                <input type="submit" id="submitRegister" data-inline="true" value="Log in">
                             </div>
                         </form>
                     </div>
@@ -76,7 +80,7 @@
             <div data-role="popup" id="myPopup3" data-overlay-theme="a" class="ui-content" style="min-width:250px;">
                 <form method="post" action="">
                     <div>
-                        <div class="postTextBox">  
+                        <div class="postTextBox">
                             <div class="ui form">
                                 <div class="field">
                                     <textarea rows="4"></textarea>
