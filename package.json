@@ -6,6 +6,7 @@
             "bcryptjs": "*",
             "body-parser": "*",
             "connect-flash": "*",
+            "consolidate": "*",
             "cookie-parser": "^1.4.1",
             "ejs": "*",
             "express": "*",
@@ -18,7 +19,8 @@
             "path": "*",
             "passport": "*",
             "passport-http": "*",
-            "passport-local": "*"
+            "passport-local": "*",
+            "swig": "*"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

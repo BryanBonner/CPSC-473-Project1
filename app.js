@@ -1,5 +1,7 @@
 var express = require('express');
 var http = require('http');
+var cons = require('consolidate');
+var path = require('path');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
 var session = require('express-session');
@@ -37,8 +39,13 @@ db.once('open', function() {
   console.log("we're connected");
 });
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'ejs');
+// View Engine Setup
+app.engine('html', cons.swig);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('express-session')({
   secret: "secret",
@@ -57,8 +64,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // set up our routes
 app.get('/', function(req, res) {
-    res.send("You are on the index");
-    // res.render('index'); Commented because giving render error
+    //res.send("You are on the index");
+    res.render('index');
 });
 
 // Register page
