@@ -50,7 +50,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // set up our routes
 app.get('/', function(req, res) {
-    res.send("You are on the index")
+    res.send("You are on the index");
     // res.render('index'); Commented because giving render error
 });
 
