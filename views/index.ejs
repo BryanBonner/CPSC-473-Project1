@@ -6,9 +6,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="app.js"></script>
     <link href="../stylesheets/indexPageStyle.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
@@ -20,43 +17,18 @@
             <a class="item" href="#">Most Hilarious Excuses</a>
             <a class="item" href="#">Most Cringy Excuses</a>
             <div class="right menu">
-                <div data-role="main" class="ui-content">
-                    <a href="#myPopup" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all  ui-btn-icon-left">Login</a>
-                    <div data-role="popup" id="myPopup" data-overlay-theme="a" class="ui-content" style="min-width:250px;">
-                        <form method="post" action="">
-                            <div>
-                                <h3>Login information</h3>
-                                <label for="userName" class="ui-hidden-accessible">Username:</label>
-                                <input type="text" name="user" id="userName" placeholder="Username">
-                                <label for="passwd" class="ui-hidden-accessible">Password:</label>
-                                <input type="password" name="passw" id="passwd" placeholder="Password">
-                                <input type="submit" data-inline="true" value="Log in">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div data-role="main" class="ui-content">
-                    <a href="#myPopup2" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left">Register</a>
-                    <div data-role="popup" id="myPopup2" data-overlay-theme="a" class="ui-content" style="min-width:250px;">
-                        <form method="post" action="">
-                            <div>
-                                <h3>Register Information</h3>
-                                <label for="emailReg" class="ui-hidden-accessible">Email:</label>
-                                <input type="email" name="email" id="emailReg" placeholder="Email">
-                                <label for="userReg" class="ui-hidden-accessible">Username:</label>
-                                <input type="text" name="user" id="userReg" placeholder="Username">
-                                <label for="passwdReg" class="ui-hidden-accessible">Password:</label>
-                                <input type="password" name="passw" id="passwdReg" placeholder="Password">
-                                <label for="passwdRetype" class="ui-hidden-accessible">Password:</label>
-                                <input type="password" name="passw" id="passwdRetype" placeholder="Re-Type password">
-                                <input type="submit" data-inline="true" value="Log in">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <button class="ui inverted blue button">
+                    <i class="sign in icon"></i>Login
+                    <a class="item" href="login.html"></button></a>
+                <button onclick=""class="ui inverted green button">
+                    <i class="sign in icon"></i>Register
+                    <a class="item" href="signUp.html"></button></a>
+                  <i class="sign in icon"></i>Login</button>
+                <button onclick=""class="ui inverted green button"><i class="sign in icon"></i>Register</button>
             </div>
         </div>
     </div>
+
     <div class="ui grid">
         <div class="row">
             <div class="column padding-reset">
@@ -70,32 +42,15 @@
 </body>
 
 <main>
-    <div class="postPopup">
-        <div data-role="main" class="ui-content">
-            <a href="#myPopup3" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all">Post</a>
-            <div data-role="popup" id="myPopup3" data-overlay-theme="a" class="ui-content" style="min-width:250px;">
-                <form method="post" action="">
-                    <div>
-                        <div class="postTextBox">  
-                            <div class="ui form">
-                                <div class="field">
-                                    <textarea rows="4"></textarea>
-                                </div>
-                                <p></p><button class="ui teal button">Submit</button><p></p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="searchBar">
+        <div class="ui category search">
             <div class="ui icon input">
                 <input class="prompt" type="text" placeholder="Search animals...">
                 <i class="search icon"></i>
             </div>
         </div>
     </div>
+
     <div class="ui segments">
         <div class="firstSegment">
             <div class="ui tertiary segment">
