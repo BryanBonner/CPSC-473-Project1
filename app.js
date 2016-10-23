@@ -2,13 +2,14 @@ var express = require('express');
 var http = require('http');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
+var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var LocalStrategy = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var app = express();
-User = require('./models/user');
+var User = require('./models/user');
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -20,8 +21,15 @@ http.createServer(app).listen(3000);
 console.log('Running on port 3000');
 
 
-// Mongoose
-mongoose.connect('mongodb://localhost/auth');
+// Connect to the database
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://473:project1@ds039674.mlab.com:39674/cpsc473');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we're connected");
+});
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,7 +50,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // set up our routes
 app.get('/', function(req, res) {
-    res.render('index');
+    res.send("You are on the index");
+    // res.render('index'); Commented because giving render error
 });
 
 // Register page
@@ -67,7 +76,7 @@ app.post("/register", function(req,res){
           console.log(err);
           return res.status(500).send();
         }
-        return res.status(200).sen();
+        return res.status(200).send();
       });
   });
 
