@@ -1,4 +1,5 @@
 var main = function() {
+<<<<<<< HEAD
   'use strict';
   var email,
   username,
@@ -34,15 +35,24 @@ var main = function() {
       }
     });
   };
+=======
+    'use strict';
+    var email,
+        username,
+        password;
+>>>>>>> 6824544b53e24ef4ffa0cf2dd07df5d1293bf7f1
 
-  $('#submitRegister').click(function() {
-    email = $('#emailReg').val();
-    username = $('#userReg').val();
-    password = $('#passwdReg').val();
-    $.post("http://localhost:3000/register", {
-      email: email, username: username, password: password
-    }, function(data) {
+    $('#submitRegister').click(function() {
+        email = $('#emailReg').val();
+        username = $('#userReg').val();
+        password = $('#passwdReg').val();
+        $.post("http://localhost:3000/register", {
+            email: email,
+            username: username,
+            password: password
+        }, function(data) {
 
+<<<<<<< HEAD
     })
   });
   $('#submitLogin').click(function() {
@@ -71,5 +81,21 @@ var main = function() {
     )
   });
   displayExcuses();
+=======
+        });
+    });
+    $('#submitLogin').click(function() {
+        username = $('#user').val();
+        password = $('#passw').val();
+        $.post("http://localhost:3000/login", {
+                email: email,
+                username: username,
+                password: password
+            },
+            function(data) {
+              
+            });
+    });
+>>>>>>> 6824544b53e24ef4ffa0cf2dd07df5d1293bf7f1
 };
 $(document).ready(main);
