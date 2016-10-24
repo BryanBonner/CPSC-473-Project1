@@ -1,18 +1,23 @@
 var express = require('express');
 var http = require('http');
 var cons = require('consolidate');
+var cookieParser = require('cookie-parser');
 var path = require('path');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
+var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
-var LocalStrategy = require('passport-local');
+var LocalStrategy = require('passport-local').Strategy;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var app = express();
+var router = express.Router();
 var User = require('./models/user');
 
+app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
@@ -49,7 +54,8 @@ app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(require('express-session')({
+
+app.use(session({
     secret: "secret",
     resave: false,
     saveUninitialized: false
@@ -71,10 +77,40 @@ app.get('/', function(req, res) {
 });
 
 // Register page
-app.get("/register", function(req, res) {
-    res.render("register");
+//app.get("/register", function(req, res) {
+//    res.render("register");
+//});
+// Register
+router.post(function(req,res){
+  //create the new user object
+  var newuser = new User();
+  newuser.email = req.body.email;
+  newuser.username = req.body.username;
+  newuser.password = req.body.password;
+
+  newuser.save(function(err,savedUser){
+    if(err){
+      console.log("User Registration Error");
+    }
+    console.log('user registered!');
+    res.redirect('/');
+  });
 });
 
+// Login
+router.post('/login', passport.authenticate('local'),function(req,res,next){
+  res.redirect('/');
+});
+
+// Logout
+router.all('/logout', function(req,res){
+  res.logout();
+  res.redirect('/');
+});
+
+
+module.exports = app;
+/*
 // register post
 app.post("/register", function(req, res) {
     //set request data
@@ -129,6 +165,7 @@ app.post("/login", function(req, res) {
         }
     });
 });
+*/
 
 
 //--commented out for now because I'm unfamiliar with passport, will update later--

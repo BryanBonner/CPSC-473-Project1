@@ -1,6 +1,8 @@
 var express = require('express');
 var nodemailer = require('nodemailer');
 var http = require('http');
+var cons = require('consolidate');
+var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
@@ -9,7 +11,9 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
 
-app.set('view engine', 'ejs');
+app.engine('html', cons.swig);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport({
@@ -20,9 +24,9 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-app.get('/email', function(req,res){
-  res.render('submitPost');
-});
+//app.get('/email', function(req,res){
+//  res.render('submitPost');
+//});
 
 app.post('/email', function(req, res) {
     var teacher = req.body.teacher;
@@ -43,5 +47,5 @@ app.post('/email', function(req, res) {
         }
         console.log('Message sent: ', info.response);
     });
-
+    res.redirect('index');
 });
