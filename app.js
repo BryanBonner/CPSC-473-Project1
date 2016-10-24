@@ -12,6 +12,10 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var app = express();
 var User = require('./models/user');
+var Excuse = require('./models/excuse.js');
+
+app.use(express.static(__dirname + '/stylesheets'));
+app.use(express.static(__dirname + '/views'));
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -130,6 +134,36 @@ app.post("/login", function(req, res) {
     });
 });
 
+//excuse post
+app.post("/submitExcuse", function(req, res) {
+  var excuse = new Excuse();
+  excuse.title = req.body.title;
+  excuse.postMaker = req.body.postMaker;
+  excuse.users_id = req.body.user_id;
+  excuse.excuse = req.body.excuse;
+  console.log("posting excuse");
+  excuse.save(function(err, savedExcuse) {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    return res.status(200).send();
+    });
+
+});
+
+//get the list of excuse posts from the database
+app.get("/getExcuses", function(req, res) {
+  Excuse.find({}, function(err, excuses) {
+      var excuseMap = {};
+
+      excuses.forEach(function(excuse) {
+          excuseMap[excuse._id] = excuse;
+      });
+
+      res.json(excuseMap);
+  });
+});
 
 //--commented out for now because I'm unfamiliar with passport, will update later--
 // User.register(new User({username: req.body.username}), req.body.password, function(err, user){

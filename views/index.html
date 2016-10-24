@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link href="../stylesheets/indexPageStyle.css" rel="stylesheet" type="text/css">
+    <link href="indexPageStyle.css" rel="stylesheet" type="text/css">
+    <link href="accordion.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -77,17 +78,24 @@
     <div class="postPopup">
         <div data-role="main" class="ui-content">
             <a href="#myPopup3" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all">Post</a>
-            <div data-role="popup" id="myPopup3" data-overlay-theme="a" class="ui-content" style="min-width:250px;">
+            <div data-role="popup" id="myPopup3" data-overlay-theme="a" class="ui-content" style="min-width:750px;">
                 <form method="post" action="">
-                    <div>
-                        <div class="postTextBox">
-                            <div class="ui form">
-                                <div class="field">
-                                    <textarea rows="4"></textarea>
-                                </div>
-                                <p></p><button class="ui teal button">Submit</button><p></p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="ten wide field">
+                                <label>Title</label>
+                                <input type="text" id="postTitle" placeholder="Title for excuse">
+                            </div>
+                            <div class="five wide field">
+                                <label>Post As</label>
+                                <input type="text" id="postMaker" placeholder="post as">
                             </div>
                         </div>
+                        <div class="field">
+                            <label>Tell us your excuse:</label>
+                            <textarea id="postExcuse"></textarea>
+                        </div>
+                        <p></p><button class="ui teal button" id="submitExcuse">Submit</button><p></p>
                     </div>
                 </form>
             </div>
@@ -100,6 +108,12 @@
             </div>
         </div>
     </div>
+    <div class="ui accordian">
+        <div id="excusePosts">
+        </div>
+    </div>
+    <p></p>
+<!--
     <div class="ui segments">
         <div class="firstSegment">
             <div class="ui tertiary segment">
@@ -121,63 +135,63 @@
                         </a>
                     </div>
                 </div>
-        </div>
-        <div class="secondSegment">
-            <div class="ui segment">
-                <p>Second excuse </p>
             </div>
-        </div>
-        <div class="thirdSegment">
-            <div class="ui tertiary segment">
-                <p>Third excuse</p>
+            <div class="secondSegment">
+                <div class="ui segment">
+                    <p>Second excuse </p>
+                </div>
             </div>
-        </div>
-        <div class="fourthSegment">
-            <div class="ui segment">
-                <p>Fourth excuse</p>
+            <div class="thirdSegment">
+                <div class="ui tertiary segment">
+                    <p>Third excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="fifthSegment">
-            <div class="ui tertiary segment">
-                <p>Fifth excuse</p>
+            <div class="fourthSegment">
+                <div class="ui segment">
+                    <p>Fourth excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="sixSegment">
-            <div class="ui segment">
-                <p>Sixth excuse</p>
+            <div class="fifthSegment">
+                <div class="ui tertiary segment">
+                    <p>Fifth excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="seventhSegment">
-            <div class="ui tertiary segment">
-                <p>Seventh excuse</p>
+            <div class="sixSegment">
+                <div class="ui segment">
+                    <p>Sixth excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="eighthSegment">
-            <div class="ui segment">
-                <p>Eighth excuse</p>
+            <div class="seventhSegment">
+                <div class="ui tertiary segment">
+                    <p>Seventh excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="ninthSegment">
-            <div class="ui tertiary segment">
-                <p>Ninth excuse</p>
+            <div class="eighthSegment">
+                <div class="ui segment">
+                    <p>Eighth excuse</p>
+                </div>
             </div>
-        </div>
-        <div class="tenthSegment">
-            <div class="ui segment">
-                <p>Tenth excuse</p>
+            <div class="ninthSegment">
+                <div class="ui tertiary segment">
+                    <p>Ninth excuse</p>
+                </div>
             </div>
+            <div class="tenthSegment">
+                <div class="ui segment">
+                    <p>Tenth excuse</p>
+                </div>
+            </div>
+
         </div>
 
+        <div class="results"></div>
+    </div> -->
+    <div class="three wide column">
+        <p>Sort By</p>
+        <li>Top Rated</li>
+        <li>Popular</li>
+        <li>New</li>
     </div>
-
-            <div class="results"></div>
-        </div>
-        <div class="three wide column">
-            <p>Sort By</p>
-                <li>Top Rated</li>
-                <li>Popular</li>
-                <li>New</li>
-        </div>
 </main>
 
 <footer>
